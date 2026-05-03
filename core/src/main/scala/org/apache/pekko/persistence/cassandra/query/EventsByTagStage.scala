@@ -671,8 +671,7 @@ import scala.util.{ Failure, Success, Try }
             repr.tagPidSequenceNr)
           updateStageState(
             _.copy(fromOffset = repr.offset).tagPidSequenceNumberUpdate(
-              repr.persistenceId,
-              (repr.tagPidSequenceNr, repr.offset, System.currentTimeMillis())))
+              repr.persistenceId, (repr.tagPidSequenceNr, repr.offset, System.currentTimeMillis())))
           push(out, repr)
           false
         } else {
@@ -751,8 +750,7 @@ import scala.util.{ Failure, Success, Try }
               repr.tagPidSequenceNr)
           updateStageState(
             _.copy(fromOffset = repr.offset).tagPidSequenceNumberUpdate(
-              repr.persistenceId,
-              (expectedSequenceNr, repr.offset, System.currentTimeMillis())))
+              repr.persistenceId, (expectedSequenceNr, repr.offset, System.currentTimeMillis())))
           push(out, repr)
           false
         }
@@ -949,8 +947,7 @@ import scala.util.{ Failure, Success, Try }
             case (acc, (pid, missingData)) =>
               log.debug("Updating tag pid sequence nr for pid {} to {}", pid, missingData.maxSequenceNr)
               acc.tagPidSequenceNumberUpdate(
-                pid,
-                (missingData.maxSequenceNr, missingData.maxOffset, System.currentTimeMillis()))
+                pid, (missingData.maxSequenceNr, missingData.maxOffset, System.currentTimeMillis()))
           }
         })
       }
